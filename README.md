@@ -134,12 +134,12 @@ Takes a UTF-8 encoded string and *changes* it in-place so that any ASCII lowerca
 #### Example Usage: 
 ```
 int32_t ret = 0;
-char str[] = "abcd";
+char str[] = "abcdé";
 ret = capitalize_ascii(str);
 printf("Capitalized String: %s\nCharacters updated: %d\n", str, ret);`
 
 === Output ===
-Capitalized String: ABCD
+Capitalized String: ABCDé
 Characters updated: 4
 ```
 
