@@ -1,6 +1,6 @@
 # PA1 - UTF-8:
 
-## Due Date 10/28 at 10pm??????
+## Due Date: Thursday 10/9 at 11:59pm
 
 ### `void next_utf8_char(char str[], int32_t cpi, char result[])`
 
@@ -343,4 +343,4 @@ You can use any code from class, lab, or discussion in your work.
 - A file `DESIGN.md` (with exactly that name) containing the answers to the design questions
 - Your tests with expected output in files `tests/*.txt`, `tests/*.txt.expect`
 
-Hand in to the `pa1` assignment on Gradescope. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
+Hand in to the `pa1` assignment on Prairie Learn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
