@@ -27,7 +27,7 @@ for TEST_FILE in $TEST_DIR/*.txt; do
         PASS=true
 
         # Check each line of the .expect file
-        while IFS= read -r LINE; do
+        while IFS= read -r LINE || [ -n "$LINE" ]; do
             if ! echo "$PROGRAM_OUTPUT" | grep -q -F "$LINE"; then
                 echo "Test $TEST_FILE failed."
                 echo "Expected line not found in output:"

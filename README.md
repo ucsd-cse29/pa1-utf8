@@ -2,79 +2,6 @@
 
 ## Due Date: Thursday 10/9 at 11:59pm
 
-### `void next_utf8_char(char str[], int32_t cpi, char result[])`
-
-Takes a UTF-8 encoded string and a codepoint index. Calculates the codepoint at that index. Then, calculates the code point with value one higher (so e.g. for ”é“ U+00E9 that would be “ê” (U+00EA), and for “🐩” (U+1F429) that would be “🐪” (U+1F42A)). Saves the encoding of that code point in the `result` array starting at index `0`.
-
-#### Example Usage:
-
-```
-char str[] = "Joséph";
-char result[100];
-int32_t idx = 3;
-next_utf8_char(str, idx, result);
-printf("Next Character of Codepoint at Index 3: %s\n",result);
-// 'é' is the 4th codepoint represented by the bytes 0xC3 0xA9
-// 'ê' in UTF-8 hex bytes is represented as 0xC3 0xAA
-
-=== Output ===
-Next Character of Codepoint at Index 3: ê
-```
-
-Now, Your final output on running the `utfanalyzer` code that will be graded should contain this extra line
-
-```
-Next Character of Codepoint at Index 3: FILL
-```
-
-**Note:** If the number of codepoints in the input string _is less than 4_, this added line would only have the prompt _without any character_ as follows:
-
-```
-Next Character of Codepoint at Index 3:
-```
-
-The complete program output for example, should look like:
-
-```
-$ ./utf8analyzer
-Enter a UTF-8 encoded string: My 🐩’s name is Erdős.
-Valid ASCII: false
-Uppercased ASCII: "MY 🐩’S NAME IS ERDőS."
-Length in bytes: 27
-Number of code points: 21
-Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
-Substring of the first 6 code points: "My 🐩’s"
-Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 105 115 32 69 114 100 337 115 46
-Animal emojis: 🐩
-Next Character of Codepoint at Index 3: 🐪
-```
-
-(All our tests will check for this newly added line, in addition to lines from the original PA)
-
-### You will also need to answer the following updated DESIGN question in your resubmission:
-
-Consider the 3-byte sequence `11100000 10000000 10100001`. Answer the following questions:
-
-- What code point does it encode in UTF-8, and what character is that?
-- What are the three other ways to encode that character?
-- Give an example of a character that has exactly three encodings (but not four, like the one in the previous example does)
-- What are some problems with having these multiple encodings, especially for ASCII characters? A web search for “overlong UTF-8 encoding” may be useful here.
-
-## Errata/Clarifications
-
-- **Most important**: The `test_script` we shared has an unfortunate bug – if a `.txt.expect` file doesn't have a blank line at the end, it may skip checking that the last line of the `.expect` correctly matches the program's output. So, to be super sure your tests are working, you should make sure your `.test.expect` files have a blank line/newline at the end. Our two sample tests didn't! So if you were confused about why a test was passing that shouldn't, that could be a reason why.
-- Some people noticed that in our provided test we didn't include the quotes around the output for uppercased ASCII:
-
-  `Uppercased ASCII: "MY 🐩’S NAME IS ERDőS."`
-
-  vs.
-
-  `Uppercased ASCII: MY 🐩’S NAME IS ERDőS.`
-
-  Either is fine. If you want to pick one, include the quotes.
-
-- The problem didn't say what to do with `utf8_substring` if the end index is larger than the `utf8_strlen` for the string. In that case, it should act as if the end index was exactly `utf8_strlen` of the string. That makes it so if you take the substring of the first 6 code points of a string with fewer than 6, you get the whole string.
-
 ## UTF-8
 
 Representing text is straightforward using ASCII: one byte per character fits well within `char[]` and it represents most English text. However, there are many more than 256 characters in the text we use, from non-Latin alphabets (Cyrillic, Arabic, and Chinese character sets, etc.) to emojis and other symbols like €, to accented characters like é and ü.
@@ -220,6 +147,8 @@ Takes a UTF-8 encoded string and start(inclusive) and end(exclusive) codepoint i
 
 If `cpi_start` is greater than `cpi_end` or either is negative, the function should have no effect.
 
+If the end index is larger than the `utf8_strlen` for the string, it should act as if the end index was exactly `utf8_strlen` of the string.
+
 #### Example Usage:
 
 ```
@@ -261,6 +190,18 @@ For simplicity for this question, we will define that that the “animal emojii�
 
 > 💡 **Hint:** Look at Problem Set: **_HW1.19. is_animal_emoji_at_**
 
+### `void next_utf8_char(char str[], int32_t cpi, char result[])`
+
+Takes a UTF-8 encoded string and a codepoint index. Calculates the codepoint at that index. Then, calculates the code point with value one higher (so e.g. for ”é“ U+00E9 that would be “ê” (U+00EA), and for “🐩” (U+1F429) that would be “🐪” (U+1F42A)). Saves the encoding of that code point in the `result` array starting at index `0`.
+
+
+**Note:** If the number of codepoints in the input string _is less than or equal to the given index_, this added line would only have the prompt _without any character_ as follows for index 3:
+
+```
+Next Character of Codepoint at Index 3:
+```
+
+
 ## UTF-8 Analyzer
 
 You'll also write a program that reads UTF-8 input and prints out some information about it.
@@ -271,11 +212,11 @@ Here's what the output of a sample run of your program should look like:
 $ ./utf8analyzer
 Enter a UTF-8 encoded string: My 🐩’s name is Erdős.
 Valid ASCII: false
-Uppercased ASCII: "MY 🐩’S NAME IS ERDőS."
+Uppercased ASCII:"MY 🐩’S NAME IS ERDőS.
 Length in bytes: 27
 Number of code points: 21
 Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
-Substring of the first 6 code points: "My 🐩’s"
+Substring of the first 6 code points: My 🐩’s
 Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 105 115 32 69 114 100 337 115 46
 Animal emojis: 🐩
 Next Character of Codepoint at Index 3: 🐪
@@ -289,11 +230,11 @@ My 🐩’s name is Erdős.
 $ ./utf8analyzer < utf8test.txt
 Enter a UTF-8 encoded string:
 Valid ASCII: false
-Uppercased ASCII: "MY 🐩’S NAME IS ERDőS."
+Uppercased ASCII: MY 🐩’S NAME IS ERDőS.
 Length in bytes: 27
 Number of code points: 21
 Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
-Substring of the first 6 code points: "My 🐩’s"
+Substring of the first 6 code points: My 🐩’s
 Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 105 115 32 69 114 100 337 115 46
 Animal emojis: 🐩
 Next Character of Codepoint at Index 3: 🐪
@@ -331,6 +272,15 @@ Answer each of these with a few sentences or paragraphs; don't write a whole ess
 
 - UTF-8 has a leading `10` on all the bytes past the first for multi-byte code points. This seems wasteful – if the encoding for 3 bytes were instead `1110XXXX XXXXXXXX XXXXXXXX` (where `X` can be any bit), that would fit 20 bits, which is over a million code points worth of space, removing the need for a 4-byte encoding. What are some tradeoffs or reasons the leading `10` might be useful? Can you think of anything that could go wrong with some programs if the encoding didn't include this restriction on multi-byte code points?
 
+### You will also need to answer the following updated DESIGN question in your resubmission:
+
+Consider the 3-byte sequence `11100000 10000000 10100001`. Answer the following questions:
+
+- What code point does it encode in UTF-8, and what character is that?
+- What are the three other ways to encode that character?
+- Give an example of a character that has exactly three encodings (but not four, like the one in the previous example does)
+- What are some problems with having these multiple encodings, especially for ASCII characters? A web search for “overlong UTF-8 encoding” may be useful here.
+
 ## Resources and Policy
 
 Refer to [the policies on assignments](https://ucsd-cse29.github.io/fa25/#assignments-and-academic-integrity) for working with others or appropriate use of tools like ChatGPT or Github Copilot.
@@ -340,7 +290,6 @@ You can use any code from class, lab, or discussion in your work.
 ## What to Hand In
 
 - Any `.c` files you wrote (can be one file or many; it's totally reasonable to only have one). We will run `gcc *.c -o utfanalyzer` to compile your code, so you should make sure it works when we do that.
-- A file `DESIGN.md` (with exactly that name) containing the answers to the design questions
-- Your tests with expected output in files `tests/*.txt`, `tests/*.txt.expect`
+- Your tests with expected output in files `tests/*.txt`, `tests/*.txt.expect`, zipped and submitted in a file named `tests.zip`.
 
 Hand in to the `pa1` assignment on Prairie Learn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
