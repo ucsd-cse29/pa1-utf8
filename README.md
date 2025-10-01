@@ -190,18 +190,6 @@ For simplicity for this question, we will define that that the “animal emojii�
 
 > 💡 **Hint:** Look at Problem Set: **_HW1.19. is_animal_emoji_at_**
 
-### `void next_utf8_char(char str[], int32_t cpi, char result[])`
-
-Takes a UTF-8 encoded string and a codepoint index. Calculates the codepoint at that index. Then, calculates the code point with value one higher (so e.g. for ”é“ U+00E9 that would be “ê” (U+00EA), and for “🐩” (U+1F429) that would be “🐪” (U+1F42A)). Saves the encoding of that code point in the `result` array starting at index `0`.
-
-
-**Note:** If the number of codepoints in the input string _is less than or equal to the given index_, this added line would only have the prompt _without any character_ as follows for index 3:
-
-```
-Next Character of Codepoint at Index 3:
-```
-
-
 ## UTF-8 Analyzer
 
 You'll also write a program that reads UTF-8 input and prints out some information about it.
@@ -219,7 +207,6 @@ Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
 Substring of the first 6 code points: My 🐩’s
 Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 105 115 32 69 114 100 337 115 46
 Animal emojis: 🐩
-Next Character of Codepoint at Index 3: 🐪
 ```
 
 You can also test the contents of _files_ by using the `<` operator:
@@ -237,12 +224,11 @@ Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
 Substring of the first 6 code points: My 🐩’s
 Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 105 115 32 69 114 100 337 115 46
 Animal emojis: 🐩
-Next Character of Codepoint at Index 3: 🐪
 ```
 
 ## Testing
 
-We provide 2 basic tests in the `tests` folder - which contain simple tests for detecting if there are errors in your code while identifying valid ASCII and converting ASCII lowercase to uppercase characters. We have provided a test bash file that checks if your program output contains each line in the .expect file. You can use the following commands to run the tests (You may need to change the permission of the `test_script` file to be executable with the command `chmod u+x test_script`.):
+We provide 3 basic tests in the `tests` folder - which contain simple tests for detecting if there are errors in your code while identifying valid ASCII and converting ASCII lowercase to uppercase characters. We have provided a test bash file that checks if your program output contains each line in the .expect file. You can use the following commands to run the tests (You may need to change the permission of the `test_script` file to be executable with the command `chmod u+x test_script`.):
 
 ```
 gcc *.c -o utfanalyzer // compiles your C code into an executable called utfanalyzer
@@ -266,20 +252,13 @@ Here are some other ideas for tests you should write. They aren't necessarily co
 
 ## PA Design Questions
 
+You will answer the following questions **on PrairieLearn** under the assessment `pa1`.
+
 Answer each of these with a few sentences or paragraphs; don't write a whole essay, but use good writing practice to communicate the essence of the idea. A good response doesn't need to be long, but it needs to have attention to detail and be clear. Examples help!
 
 - Another encoding of Unicode is UTF-32, which encodes _all_ Unicode code points in 4 bytes. For things like ASCII, the leading 3 bytes are all 0's. What are some tradeoffs between UTF-32 and UTF-8?
 
 - UTF-8 has a leading `10` on all the bytes past the first for multi-byte code points. This seems wasteful – if the encoding for 3 bytes were instead `1110XXXX XXXXXXXX XXXXXXXX` (where `X` can be any bit), that would fit 20 bits, which is over a million code points worth of space, removing the need for a 4-byte encoding. What are some tradeoffs or reasons the leading `10` might be useful? Can you think of anything that could go wrong with some programs if the encoding didn't include this restriction on multi-byte code points?
-
-### You will also need to answer the following updated DESIGN question in your resubmission:
-
-Consider the 3-byte sequence `11100000 10000000 10100001`. Answer the following questions:
-
-- What code point does it encode in UTF-8, and what character is that?
-- What are the three other ways to encode that character?
-- Give an example of a character that has exactly three encodings (but not four, like the one in the previous example does)
-- What are some problems with having these multiple encodings, especially for ASCII characters? A web search for “overlong UTF-8 encoding” may be useful here.
 
 ## Resources and Policy
 
@@ -289,7 +268,8 @@ You can use any code from class, lab, or discussion in your work.
 
 ## What to Hand In
 
+You will submit the files **on PrairieLearn**
 - Any `.c` files you wrote (can be one file or many; it's totally reasonable to only have one). We will run `gcc *.c -o utfanalyzer` to compile your code, so you should make sure it works when we do that.
-- Your tests with expected output in files `tests/*.txt`, `tests/*.txt.expect`, zipped and submitted in a file named `tests.zip`.
+- A zip file named `tests.zip`, containing your tests with expected output in files tests/*.txt, tests/*.txt.expect.
 
-Hand in to the `pa1` assignment on Prairie Learn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
+Hand in to the `pa1` assessment on PrairieLearn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
