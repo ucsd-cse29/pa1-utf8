@@ -39,7 +39,7 @@ Here's what the output of a sample run of your program should look like:
 $ ./utf8analyzer
 Enter a UTF-8 encoded string: My 🐩’s name is Erdős.
 Valid ASCII: false
-Uppercased ASCII:"MY 🐩’S NAME IS ERDőS.
+Uppercased ASCII: MY 🐩’S NAME IS ERDőS.
 Length in bytes: 27
 Number of code points: 21
 Bytes per code point: 1 1 1 4 3 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1 1
@@ -84,24 +84,26 @@ for help on a function from a later one.
 Here we give some hints about how specific problem set problems correspond to
 specific lines of output.
 
-- `Valid ASCII: ...` – **_HW1.15. is_ascii_**
-- `Uppercased ASCII: ...` – **_HW1.13. capitalize_ascii_**
+- `Valid ASCII:` – **_HW1.15. is_ascii_**
+- `Uppercased ASCII:` – **_HW1.13. capitalize_ascii_**
 
   Here it is important to avoid changing the string that's going to be used for
   the rest of the printing!
-- `Length in bytes: ...` – Are there any built-in `string.h` functions that can help?
-- `Number of code points: ...` –  **_HW1.17. Count UTF-8 String Length_**
-- `Bytes per code point: ...` – **_HW1.16. UTF8 Codepoint Size_**
-  
+
+- `Length in bytes:` – Are there any built-in `string.h` functions that can help?
+- `Number of code points:` – **_HW1.17. Count UTF-8 String Length_**
+- `Bytes per code point:` – **_HW1.16. UTF8 Codepoint Size_**
+
   Here it could be useful to use the function from the problem set inside a loop!
-- `Substring of the first 6 code points: ...` – **_HW1.18. utf8_substring_**
-- `Code points as decimal numbers: ...` –  **_HW1.5. Find UTF-8 Codepoint at Index_**
+
+- `Substring of the first 6 code points:` – **_HW1.18. utf8_substring_**
+- `Code points as decimal numbers:` – **_HW1.5. Find UTF-8 Codepoint at Index_**
 
   Another use of a loop with a problem set problem!
-- `Animal emojis: ...` – **_HW1.19. is_animal_emoji_at_**
+
+- `Animal emojis:` – **_HW1.19. is_animal_emoji_at_**
 
   Another use of a loop, maybe also combined with some conditionals!
-
 
 ## Testing
 
@@ -120,7 +122,7 @@ Here are some other ideas for tests you should write. They aren't necessarily co
 - Strings with and without animal emojii, including at the beginning, middle, and end of the string, and at the beginning, middle, and end of the range
 - Strings of exactly 5 characters
 
-We recommend *saving your input in files* and using redirection to test so you don't have to figure out how to type the same UTF8 characters over and over.
+We recommend _saving your input in files_ and using redirection to test so you don't have to figure out how to type the same UTF8 characters over and over.
 
 ## PA Design Questions
 
@@ -140,8 +142,8 @@ You can use any code from class, lab, or discussion in your work.
 
 ## What to Hand In
 
-You will submit the files **on Gradescope**
 - Any `.c` files you wrote (can be one file or many; it's totally reasonable to only have one). We will run `gcc *.c -o utfanalyzer` to compile your code, so you should make sure it works when we do that.
-- A zip file named `tests.zip`, containing your tests with expected output in files tests/*.txt, tests/*.txt.expect.
+- A file `DESIGN.md` (with exactly that name) containing the answers to the design questions
+- Your tests are in files `tests/*.txt`
 
-Hand in to the `pa1` assessment on PrairieLearn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
+Hand in to the `pa1` assignment on Prairie Learn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
