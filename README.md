@@ -65,7 +65,7 @@ Code points as decimal numbers: 77 121 32 128041 8217 115 32 110 97 109 101 32 1
 Animal emojis: 🐩
 ```
 
-## Milestones, Working Process, and Definitions
+## Using the Problem Set for your PA
 
 Most of the needed functionality for the PA is in the problem set problems! So
 part of your workflow for this PA should be to move code over from the
@@ -105,14 +105,7 @@ specific lines of output.
 
 ## Testing
 
-We provide 3 basic tests in the `tests` folder - which contain simple tests for detecting if there are errors in your code while identifying valid ASCII and converting ASCII lowercase to uppercase characters. We have provided a test bash file that checks if your program output contains each line in the .expect file. You can use the following commands to run the tests (You may need to change the permission of the `test_script` file to be executable with the command `chmod u+x test_script`.):
-
-```
-gcc *.c -o utfanalyzer // compiles your C code into an executable called utfanalyzer
-./test_script utfanalyzer
-```
-
-Then it will print out result in your terminal.
+We provide 3 basic tests in the `tests` folder - which contain simple tests identifying valid ASCII and converting ASCII lowercase to uppercase characters.
 
 You can see the result for a single test by using:
 
@@ -127,10 +120,11 @@ Here are some other ideas for tests you should write. They aren't necessarily co
 - Strings with and without animal emojii, including at the beginning, middle, and end of the string, and at the beginning, middle, and end of the range
 - Strings of exactly 5 characters
 
+We recommend *saving your input in files* and using redirection to test so you don't have to figure out how to type the same UTF8 characters over and over.
 
 ## PA Design Questions
 
-You will answer the following questions **on PrairieLearn** under the assessment `pa1`.
+You will answer the following questions **on Gradescope** under the assessment `pa1`.
 
 Answer each of these with a few sentences or paragraphs; don't write a whole essay, but use good writing practice to communicate the essence of the idea. A good response doesn't need to be long, but it needs to have attention to detail and be clear. Examples help!
 
@@ -146,7 +140,7 @@ You can use any code from class, lab, or discussion in your work.
 
 ## What to Hand In
 
-You will submit the files **on PrairieLearn**
+You will submit the files **on Gradescope**
 - Any `.c` files you wrote (can be one file or many; it's totally reasonable to only have one). We will run `gcc *.c -o utfanalyzer` to compile your code, so you should make sure it works when we do that.
 - A zip file named `tests.zip`, containing your tests with expected output in files tests/*.txt, tests/*.txt.expect.
 
