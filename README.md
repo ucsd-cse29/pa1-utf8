@@ -146,4 +146,4 @@ You can use any code from class, lab, or discussion in your work.
 - A file `DESIGN.md` (with exactly that name) containing the answers to the design questions
 - Your tests are in files `tests/*.txt`
 
-Hand in to the `pa1` assignment on Prairie Learn. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
+Hand in to the `pa1` assignment on Gradescope. The submission system will show you the output of compiling and running your program on the test input described above to make sure the baseline format of your submission works. You will not get feedback about your overall grade before the deadline.
