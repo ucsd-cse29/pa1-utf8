@@ -1,6 +1,6 @@
 ## PA Design Questions
 
-You will answer the following questions in your DESIGN.md file. Answer each of these with a few sentences or paragraphs; don't write a whole essay, but use good writing practice to communicate the essence of the idea. A good response doesn't need to be long, but it needs to have attention to detail and be clear. Examples help!
+Answer the following questions below. Answer each of these with a few sentences or paragraphs; don't write a whole essay, but use good writing practice to communicate the essence of the idea. A good response doesn't need to be long, but it needs to have attention to detail and be clear. Examples help!
 
 **Question 1**
 
@@ -25,3 +25,7 @@ For a string `s` that is n+1 bytes long (n bytes of data with a 1-byte null term
 - Is this property true for UTF-32? Explain why or give a counterexample.
 
 _HINT_: Write out the UTF-8 and UTF-32 encoding of a few short strings, including characters in the ASCII range and outside it.
+
+Write your answers below.
+
+## Answers
