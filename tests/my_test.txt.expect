@@ -1,0 +1,9 @@
+Enter a UTF-8 encoded string: My name is Junrui😀 I love my 🐕!       
+Valid ASCII: false 
+Uppercased ASCII: MY NAME IS JUNRU😀 I LOVE  MY 🐕!
+Length in bytes: 38
+Number of code points: 32
+Bytes per code point: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 4 1 1 1 1 1 1 1 1 1 1 1 1 4 1 1 
+Substring of the first 6 code points: My nam
+Code points as decimal numbers: 77 121 32 110 97 109 101 32 105 115 32 74 117 110 114 117 128512 32 73 32 108 111 118 101 32 32 109 121 32 128021 33 10 
+Animal emojis: 🐕 
